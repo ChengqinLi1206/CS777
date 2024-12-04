@@ -10,7 +10,6 @@ The repository includes the following components:
 - **`main.py`**: Main script for data loading, preprocessing, and model training.
 - **`README.md`**: Project documentation.
 - **`data/`**: Directory containing training and testing datasets.
-- **`output/`**: Directory for saving results and model outputs.
 
 ---
 
@@ -48,6 +47,7 @@ You can download the dataset from [Kaggle - Amazon Reviews Dataset](https://www.
    ```python
    train_path = "gs://your-bucket-name/train.csv"
    test_path = "gs://your-bucket-name/test.csv"
+   output_path = "gs://your-bucket-name/output_all_results"
 
 3. **Upload the Code**  
    Upload your modified script (main.py) into your bucket.
