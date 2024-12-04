@@ -1,4 +1,13 @@
 from pyspark.sql import SparkSession
+from pyspark.sql import Row
+import matplotlib.pyplot as plt
+from pyspark.ml.feature import VectorAssembler
+from pyspark.ml.feature import Tokenizer, HashingTF, IDF
+from pyspark.ml.classification import LogisticRegression, LinearSVC, RandomForestClassifier
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+from pyspark.ml import Pipeline
+from pyspark.sql.functions import col, when, lit
+import pandas as pd
 
 # Initialize Spark session
 spark = SparkSession.builder.appName("AmazonReviewML").getOrCreate()
@@ -23,8 +32,6 @@ combined_df = combined_df.dropDuplicates()
 # Show the structure of the DataFrame
 combined_df.printSchema()
 
-import matplotlib.pyplot as plt
-
 # Count different values in the polarity column
 polarity_counts = combined_df.groupBy("polarity").count().orderBy("polarity")
 
@@ -48,14 +55,6 @@ for bar in bars:
 # Show the plot
 plt.ylim(0, max(polarity_counts_pd['count']) * 1.1)  # Set y-axis limit slightly above the max count
 plt.show()
-
-
-from pyspark.ml.feature import VectorAssembler
-from pyspark.ml.feature import Tokenizer, HashingTF, IDF
-from pyspark.ml.classification import LogisticRegression, LinearSVC, RandomForestClassifier
-from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-from pyspark.ml import Pipeline
-from pyspark.sql.functions import col, when
 
 # Map polarity to binary labels
 combined_df = combined_df.withColumn("label", when(col("polarity") == 1, 1).otherwise(0))
@@ -111,11 +110,8 @@ results = {
 }
 
 # Display results
-import pandas as pd
 results_df = pd.DataFrame(results)
 print(results_df)
-
-from pyspark.sql.functions import col, when, lit
 
 # Define a function to compute TPR and TNR
 def calculate_metrics(predictions):
@@ -161,8 +157,6 @@ metrics_results = {
 # Convert to a Pandas DataFrame for display
 metrics_df = pd.DataFrame(metrics_results)
 print(metrics_df)
-
-from pyspark.sql import Row
 
 # Combine the two results (results_df and metrics_df) into a single DataFrame
 results_combined = {
