@@ -56,5 +56,5 @@ You can download the dataset from [Kaggle - Amazon Reviews Dataset](https://www.
    Set up a Spark cluster in your cloud environment (e.g., Google Cloud Dataproc, AWS EMR, or Alibaba E-MapReduce).
 
 5.	**Submit the Job**
-   Use the following command to submit the job to your cluster:spark-submit gs://your-bucket-name/main.py  
+   Choose your cluster, and then choose pyspark, paste the code path "gs://your-bucket-name/main.py", attach arguments "gs://your-bucket-   name/train.csv" and "gs://your-bucket-name/test.csv". Use the following command to submit the job to your cluster:spark-submit gs://your-bucket-name/main.py  
 
