@@ -9,6 +9,9 @@ This project leverages **Apache Spark** to perform sentiment analysis on the Ama
 The repository includes the following components:
 - **`main.py`**: Main script for data loading, preprocessing, and model training.
 - **`README.md`**: Project documentation.
+- **`Amazon Review Sentiment Analysis Report.docx`**: Project Report.
+- **`output_results.pdf`**: All results of our project.
+- **`spark_history.pdf`**: The history of our project.
 
 ---
 
