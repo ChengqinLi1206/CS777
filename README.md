@@ -9,7 +9,6 @@ This project leverages **Apache Spark** to perform sentiment analysis on the Ama
 The repository includes the following components:
 - **`main.py`**: Main script for data loading, preprocessing, and model training.
 - **`README.md`**: Project documentation.
-- **`data/`**: Directory containing training and testing datasets.
 
 ---
 
